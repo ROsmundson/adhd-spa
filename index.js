@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //Templates
 
-function fetchTheFacts() {
-  fetch("http://localhost:3000/justTheFacts")
-  .then((resp) => resp.json())
-  .then((json) => console.log(json));
-}
-
-fetchTheFacts()
+// function fetchTheFacts() {
+//   fetch("http://localhost:3000/justTheFacts")
+//   .then((resp) => resp.json())
+//   .then((json) => console.log(json));
+// }
+// fetchTheFacts()
