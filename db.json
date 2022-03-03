@@ -1,0 +1,60 @@
+{
+    "justTheFacts": [{
+        "id": 1,
+        "fact": "Attention-deficit/hyperactivity disorder (ADHD) is a chronic neurodevelopmental disorder. Symptoms continue into adulthood in more than three-quarters of cases. ADHD is characterized by developmentally inappropriate levels of inattention, impulsivity and hyperactivity.",
+        "website": "https://chadd.org/about-adhd/frequently-asked-questions/"
+        },
+        {
+        "id": 2,
+        "fact": "ADHD is a highly genetic, brain-based syndrome that has to do with the regulation of a particular set of brain functions and related behaviors.",
+        "website": "https://add.org/adhd-facts"
+        },
+        {
+        "id": 3,
+        "fact": "Approximately 5% of adults in the US, both male and female, have ADHD. That's more than 11,000,000 people.",
+        "website": "https://add.org/adhd-facts/ "
+        },
+        {
+        "id": 4,
+        "fact": "There are different subtypes of ADHD (inattentive, hyperactive, and combined type), and every person has a unique brain profile. As with anything else, no two people with ADHD are exactly the same and everyone experiences ADHD in their own way.",
+        "website": "https://add.org/adhd-facts/"
+        },
+        {
+        "id": 5,
+        "fact": 
+        "ADHD has been recognized as a legitimate diagnosis by major medical, psychological, and educational organizations, including the National Institutes of Health and the U.S. Department of Education.",
+        "website": "https://www.additudemag.com/adhd-myths-and-facts-learn-the-truth-about-attention-deficit/"
+        },
+        {
+        "id": 6,
+        "fact": 
+        "ADHD a result of an imbalance of chemical messengers, or neurotransmitters, within the brain. Its primary symptoms are inattention, impulsiveness, and, sometimes, hyperactivity.",
+        "website": "https://www.additudemag.com/adhd-myths-and-facts-learn-the-truth-about-attention-deficit/"
+        },
+        {
+        "id": 7,
+        "fact": 
+        "ADHD is a very reliable diagnosis. As a matter of fact, it is one of the most reliable diagnoses in all of psychiatry, and in particular, child psychiatry.",
+        "website": "https://www.additudemag.com/adhd-myths-and-facts-learn-the-truth-about-attention-deficit/"
+        },
+        {
+        "id": 8,
+        "fact": 
+        "ADHD is neither a modern phenomenon nor a purely American or Western one. It was not dreamed up in response to pressure from the pharmaceutical industry or in response to modern academic pressures and the drive to succeed in school. ADHD is rooted in brain chemistry, not dicipline.",
+        "website": "https://www.additudemag.com/adhd-myths-and-facts-learn-the-truth-about-attention-deficit/"
+        },
+        {
+        "id": 9,
+        "fact": "The prefrontal cortex of the brain houses executive functioning and manages planning, attention, remembering, organizing and emotional reactions. Those with ADD/ADHD suffer from dysfunctional brain activity in the prefrontal cortex and a dysregulation of dopamine.“People who think ADHD means having a short attention span misunderstand what ADHD is,” says Kathleen Nadeau, Ph.D., a psychologist in Silver Spring, Maryland, and the author of ADD-Friendly Ways to Organize Your Life. “A better way to look at it is that people with ADHD have a dysregulated attention system.”",
+        "website": "https://villadevida.org/blog/2020-10-19-adhd"
+        },
+        {
+        "id": 10,
+        "fact": "ADHD is diagnosed only when symptoms are severe enough to cause ongoing problems in more than one area of your life. These persistent and disruptive symptoms can be traced back to early childhood.",
+        "website": "https://www.mayoclinic.org/diseases-conditions/adult-adhd/symptoms-causes/syc-20350878"
+        }
+    ]
+    }
+    
+    
+    
