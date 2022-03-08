@@ -23,6 +23,19 @@ li a:hover {
     color: white
   }
 
+.randomeBttn {
+  background-color: green;
+  color: white
+}
+
+
+
+
+
+
+
+
+
 body {
     background: #368dda;
   }
@@ -78,11 +91,5 @@ article.shadowbox {
   }
   
   
-  .next {
-    display: block;
-    color: black;;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+
   
