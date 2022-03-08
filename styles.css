@@ -35,6 +35,7 @@ div.shadowbox {
     background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
 }
 
+
 article.shadowbox {
     width: 42em;
     border: 1px solid #333;
@@ -76,17 +77,12 @@ article.shadowbox {
     color: black;
   }
   
-  .previous {
-    background-color: #f1f1f1;
-    color: black;
-    }
-
   
   .next {
-    background-color: #04AA6D;
-    color: white;
-  }
+    display: block;
+    color: black;;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
   
-  .round {
-    border-radius: 50%;
-  }

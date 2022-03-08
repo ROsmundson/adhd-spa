@@ -3,54 +3,45 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-
-function buildTheFacts(factoid){
+function renderTheFacts(factoid){
     const factsContainer = document.getElementById('adhd-facts-container');
     const factCard = document.createElement("div");
     const factTitle = document.createElement("h3");
     const factContent = document.createElement("p");
+    const factURL = document.createElement("a"); 
     const nextBttn = document.createElement("button");
-   
+    // const webSourcesDiv = document.createElement("div");
+    
     factCard.id = `fact-${factoid.id}`
     factCard.className = "fact-card";
     factTitle.textContent = factoid.title;
     factContent.textContent = factoid.fact;
+    factURL.className = "sources"
     factURL.href = factoid.website;
+    nextBttn.id = "next"
+    nextBttn.className = "bttn";
+    nextBttn.innerText = "Next Randome Fact";
+    
+    // webSourcesDiv.id = "source";
+    // webSourcesDiv.class = "sources";
 
-    nextBttn.className = "next";
-    nextBttn.textContent = "Next Random Fact"
-    nextBttn.addEventListener("click", () => renderNextFact)
+
+
+    
 
     factsContainer.append(factCard);
-    factCard.append(factTitle, factContent, factURL)
-    factCard.append(factContent);
-    factCard.append(factURL);
-
-    factCard.append(factURL);
-    factsContainer.appendChild(nextBttn);
+    factCard.append(factTitle, factContent, factURL, nextBttn);
 }
 
-function renderTheFact() {
+function fetchTheFacts() {
     fetch(BASE_URL + '/justTheFacts')
     .then(response => response.json())
-    .then(justTheFacts => justTheFacts.forEach(buildTheFacts))
-    }
-//rethink names of renderTheFacts and buildTheFact
-function initiateFacts() {
-    renderTheFact()
+    .then(data => data.forEach(renderTheFacts));
+}
+
+function initiateTheFacts() {
+    fetchTheFacts();
 }
 
 
-initiateFacts()
-
-
-
-// const ul = document.createElement("ul");
-// ul.id = "fact-list";
-// ul.innerHTML += `<li><a href="#" data-id = ${factoid.id}">${factoid.title}</a></li>`
-// factCard.append(ul)
-
-
-const factURL = document.createElement("a")
-const linkText = document.createTextNode("More Information From the Source")
-factURL.appendChild(linkText);
+initiateTheFacts()
