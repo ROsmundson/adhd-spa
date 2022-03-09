@@ -28,14 +28,6 @@ li a:hover {
   color: white
 }
 
-
-
-
-
-
-
-
-
 body {
     background: #368dda;
   }
@@ -89,7 +81,22 @@ article.shadowbox {
     background-color: #ddd;
     color: black;
   }
+
+  li.facts-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    }
+
+  li.facts-list::after {
+    white-space: pre;
+
+  }
   
-  
+  ul.random-fact {
+    font-weight : bold;
+    color: green
+  }
+
 
   
