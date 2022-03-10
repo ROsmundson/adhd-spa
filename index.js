@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-//construct facts cards and append using randome
+document.addEventListener('click', (homeBttn) => {})
+
+
+// const input = document.getElementById('input');
+// input.addEventListener('click', function() {
+//   alert('I was clicked!');
+// });
+// //construct facts cards and append using randome
+
 function renderFacts(factoid){
     const adhdCards = document.createElement("div");
     const h2 = document.createElement("h2");
