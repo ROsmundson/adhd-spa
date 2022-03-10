@@ -1,67 +1,23 @@
 const BASE_URL = 'http://localhost:3000';
-const factsContainer = document.getElementById('fact-container');
-console.log(factsContainer);
-
-
-
-
+const factsContainer = document.getElementById("facts-container")
+//1. use tasklister as example for building a next iteration of facts as we did with todos?
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-document.addEventListener('click', (homeBttn) => {})
-
-
-// const input = document.getElementById('input');
-// input.addEventListener('click', function() {
-//   alert('I was clicked!');
-// });
-// //construct facts cards and append using randome
-
 function renderFacts(factoid){
-    const adhdCards = document.createElement("div");
-    const h2 = document.createElement("h2");
-    const factsDiv = document.createElement("div");
-    
-    const factCardUl= document.createElement("ul");
-    const factContentLi = document.createElement("li");
-    const nextRandomeBttn = document.createElement("button")
-    
-    factsContainer.id = "container";
-    factsContainer.class = "shadowbox";
-    adhdCards.id = `fact-${factoid.id}`;
-    adhdCards.className = "shadowbox";
-    h2.id = "fact-header";
-    h2.textContent = "Did you know?";
-    factsDiv.id = "facts-div";
-    factCardUl.className = "random-fact";
-    factCardUl.textContent = factoid.title;
-    factContentLi.className = "facts-list";
-    factContentLi.textContent = factoid.fact;
-    factContentLi.fact = factoid.fact;
-    nextRandomeBttn.id = "nextBttn";
-    nextRandomeBttn.className = "randomeBttn";
-    nextRandomeBttn.textContent = "Next Randome Fact";
-    
-    factsContainer.appendChild(adhdCards);
-    factsDiv.append()
-    adhdCards.append(h2, factsDiv, factCardUl, factContentLi, nextRandomeBttn)
+    const factsCard = document.createElement("div");
+    factsCard.id = "facts-card-title"
+    factsCard.innerHTML = `<h3>${factoid.title}</h3>`;
+    const factsContent = document.createElement("p");
+    factsContent.textContent = `${factoid.fact}`;
 
+    factsContainer.appendChild(factsCard);
+    factsCard.append(factsContent);  
+    }
 
-    // // const webSourcesDiv = document.createElement("div");
-    
-    // factTitle.textContent = factoid.title;
-    // factContent.textContent = factoid.fact;
-    // factURL.className = "sources"
-    // factURL.href = factoid.website;
-    // webSourcesDiv.id = "source";
-    // webSourcesDiv.class = "sources";
-
-   
-
-    // factCard.append(factTitle, factContent, factURL);
-    // factCard.append(nextRandomeBttn);
-}
+        
+//===============================================================
 
 function fetchTheFacts() {
     fetch(BASE_URL + '/TheFacts')
@@ -73,5 +29,17 @@ function initiateTheFacts() {
     fetchTheFacts();
 }
 
-
 initiateTheFacts()
+
+
+
+
+//2. possible functions for grabbing/displaying/then delete on next fact click
+
+////3. function to grab next fact and display/ then delete on next fact click
+
+//This all the way through. Reminder =+ home and away will need to be handled 
+
+//Stretch goal - ability to return to fact and continue iterating??? handle returning to page where left off???
+
+
