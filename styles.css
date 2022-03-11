@@ -23,15 +23,13 @@ li a:hover {
     color: white
   }
 
-.randomeBttn {
-  background-color: green;
-  color: white
-}
 
+/* Body */
 body {
     background: #368dda;
   }
 
+/* All divs */
 div.shadowbox {
     width: 42em;
     border: 1px solid #333;
@@ -40,7 +38,13 @@ div.shadowbox {
     background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
 }
 
+.next-button {
+  background: blue;
+}
 
+
+
+/* About me */
 article.shadowbox {
     width: 42em;
     border: 1px solid #333;
@@ -49,54 +53,6 @@ article.shadowbox {
     background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc); 
 }
 
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-}
-
-.card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-  
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
-  }
-
-  a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-  }
-  
-  a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  li.facts-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    }
-
-  li.facts-list::after {
-    white-space: pre;
-
-  }
-  
-  ul.random-fact {
-    font-weight : bold;
-    color: green
-  }
 
 
   
