@@ -24,46 +24,43 @@ function renderFacts(factoid){
     
     factsContainer.appendChild(factsCard);
     factsCard.append(factsContent);
-    factsCard.append(nextButton);
+    factsContainer.append(nextButton);
 }
     //===============================================================
     
-function fetchTheFacts() {
-    fetch(BASE_URL + '/TheFacts')
+function fetchFirstFact() {
+    fetch(BASE_URL + '/TheFacts/')
     .then(response => response.json())
     .then(data => {
-        let fact = data
-        if(fact[0].id === 1){
+        let fact = data;
+        if(fact[0].id === 1) {
             renderFacts(fact[0]);
         }
-        //on click move to next fact readNextFact()
-    })
-    .catch(error => console.error('Error:', error));
+    }).catch(error => console.error("Error:", error))
+}
 
-    console.log(nextButton);
+function fetchNextFact() {
     nextButton.addEventListener('click', () => {
-        console.log('i was clicked');
-        console.log(event);
-    });
-
+    const currentFact = document.getElementById("facts-card-title");
+    currentFact.remove();   
+        fetch(BASE_URL + '/TheFacts/')
+        .then(response => response.json())
+        .then(data => console.log(data))
+})
 }
 
-function switchFacts(event){
+// for (i = 0; i < numbers.length; i++) {
+//     console.log(numbers[i]);
+//   } 
 
-}
+          
 
 function initiateTheFacts() {
-    fetchTheFacts();
+    fetchFirstFact();
+    fetchNextFact();
 }
 
 initiateTheFacts()
-
-
-
-
-
-
-function renderUserStory() {console.log("returned fact")}
 
 
 
@@ -76,5 +73,3 @@ function renderUserStory() {console.log("returned fact")}
 //This all the way through. Reminder =+ home and away will need to be handled 
 
 //Stretch goal - ability to return to fact and continue iterating??? handle returning to page where left off???
-
-
