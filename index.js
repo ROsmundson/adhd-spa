@@ -4,6 +4,9 @@ const homeNav = document.getElementById("home")
 const awayNav = document.getElementById("about-me")
 const factsContainer = document.getElementById("facts-container")
 const userStoryContainer = document.getElementById("")
+const factsCard = document.createElement("div");
+factsCard.id = "facts-card"
+
 const nextButton = document.createElement("button")
 //Page load notification
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,12 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //construct and prepare nodes to be rendered upon fetch
 function renderFacts(factoid){
-    const factsCard = document.createElement("div");
-    factsCard.id = "facts-card-title"
     factsCard.innerHTML = `<h3>${factoid.title}</h3>`;
     const factsContent = document.createElement("p");
     factsContent.textContent = `${factoid.fact}`;
-    
     const p = document.createElement('p');
     nextButton.innerText = "Read Next Fact";
     p.textContent = `${factoid}`;
@@ -26,45 +26,51 @@ function renderFacts(factoid){
     factsCard.append(factsContent);
     factsContainer.append(nextButton);
 }
+        
+function removeFacts(factoid) {
+    factsCard.remove(factoid)
+ }
+
+function renderNewFacts(facts){
+    renderFacts(facts[0])
+
+}
+
+
     //===============================================================
     
-function fetchFirstFact() {
+function fetchFact() {
     fetch(BASE_URL + '/TheFacts/')
     .then(response => response.json())
     .then(data => {
-        let fact = data;
-        if(fact[0].id === 1) {
-            renderFacts(fact[0]);
+        let facts = data;
+            renderFacts(facts[0]);
+            nextButton.addEventListener('click', () => {
+                removeFacts();
+                let newFacts = facts.slice(1);
+                renderNewFacts();
+                // for(let i=0; i < newFacts.length; i++) {
+                //     if(`newFacts[${i}]` === facts[0]){
+                //         renderFacts(facts[0])
+                //     }
+                // }  
+            });
+            });
         }
-    }).catch(error => console.error("Error:", error))
-}
+    
+    function initiateTheFacts() {
+        fetchFact();
+        renderFacts();
+        removeFacts();
+        renderNewFacts();
 
-function fetchNextFact() {
-    nextButton.addEventListener('click', () => {
-    const currentFact = document.getElementById("facts-card-title");
-    currentFact.remove();   
-        fetch(BASE_URL + '/TheFacts/')
-        .then(response => response.json())
-        .then(data => console.log(data))
-})
-}
-
-// for (i = 0; i < numbers.length; i++) {
-//     console.log(numbers[i]);
-//   } 
-
-          
-
-function initiateTheFacts() {
-    fetchFirstFact();
-    fetchNextFact();
-}
-
-initiateTheFacts()
-
-
-
-
+    }
+    
+    initiateTheFacts()
+    
+    
+    
+    
 
 //2. possible functions for grabbing/displaying/then delete on next fact click
 
