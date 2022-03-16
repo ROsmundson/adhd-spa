@@ -1,9 +1,9 @@
 //Main Node grabbers:
 const BASE_URL = 'http://localhost:3000';
-const homeNav = document.getElementById("home")
-const awayNav = document.getElementById("about-me")
 const factsContainer = document.getElementById("facts-container")
-const userStoryContainer = document.getElementById("")
+//const homeNav = document.getElementById("home")
+//const awayNav = document.getElementById("about-me")
+//const userStoryContainer = document.getElementById("")
 //----------------------------------------------------------------
 //Page load notification
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,40 +27,37 @@ function renderFacts(factoid){
     factsCard.append(nextButton);
 };
 
-
-//===============================================================
-function loadFirstFact() {
+function loadFact() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
     .then(data => {
-        renderFacts(data[0]);
+        let facts = data;
+        renderFacts(facts[0]);
+        let nextButton = document.getElementById('next-button')
+        nextButton.addEventListener('click', () => {
+            //console.log('I heard you!')
+            deleteCurrentFact();
+            facts = data.slice(1)
+            //console.log(facts)
+            renderFacts(facts[0])
+
+        });
+        
     }).catch(error => {
         console.error('Error:', error);
     })
-    
 };
 
-function loadNewFact() {
-        fetch(BASE_URL + '/TheFacts')
-        .then(response => response.json())
-        .then(data => {
-            let nextButton = document.getElementById('next-button');
-            let currentFact = document.getElementById('facts-card')
-            nextButton.addEventListener("click", () => {
-            currentFact.remove();
-            let newFactsList = data.slice(1);
-            for(let i = 0; i < newFactsList.length; i++){
-                for(const newFact in newFactsList){
-                    renderFacts(`newFact[${[i]}`);
-                }};
-            });
-        });
-    };
+function deleteCurrentFact(){
+    let currentFact = document.getElementById('facts-card');
+    currentFact.remove();
+    console.log(renderFacts)
+}
 
 
 function initiateTheFacts() {
-    loadFirstFact();
-    loadNewFact();
+    loadFact()
 };
 
 initiateTheFacts();
+        
