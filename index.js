@@ -44,15 +44,18 @@ function loadNewFact() {
         fetch(BASE_URL + '/TheFacts')
         .then(response => response.json())
         .then(data => {
-            nextButton = document.getElementById('next-button');
-            currentFact = document.getElementById('facts-card')
+            let nextButton = document.getElementById('next-button');
+            let currentFact = document.getElementById('facts-card')
             nextButton.addEventListener("click", () => {
-            newFactsList = data.slice(1);
             currentFact.remove();
-            renderFacts(newFactsList[0])
-            })
+            let newFactsList = data.slice(1);
+            for(let i = 0; i < newFactsList.length; i++){
+                for(const newFact in newFactsList){
+                    renderFacts(`newFact[${[i]}`);
+                }};
+            });
         });
-}
+    };
 
 
 function initiateTheFacts() {
