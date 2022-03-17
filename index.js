@@ -12,50 +12,57 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-function initiateFactsApp() {
-    loadFact();
+nextButton = document.getElementsByClassName('button')
+console.log(nextButton)
+nextButton.addEventListener('click', () => console.log("I was clicked"))
+console.log(button)
+
 
 //construct and prepare nodes to be dynamically rendered upon fetch
-function renderFact(factoid){
-    const factsCard = document.createElement("div");
-    factsCard.id = "facts-card"
-    factsCard.innerHTML = `<h3>${factoid.title}</h3>`;
 
-    const factsContent = document.createElement("p");
-    factsContent.textContent = `${factoid.fact}`;
-    const nextButton = document.createElement("button")
-    nextButton.id = "next-button";
-    nextButton.innerText = "Read Next Fact";
-
-    factsContainer.appendChild(factsCard);
-    factsCard.append(factsContent);
-    factsCard.append(nextButton);
-
-    nextButton.addEventListener('click', () => {
-        factsCard.replaceChildren();
-        renderFact();
-        //after removing fact 1, render next fact from facts array
-
-    })
-};
-
-function loadFact() {
+function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => {
-        let facts = data;
-        renderFact(facts[0]);
+    .then(data => { 
+        let facts = data
+            if(`facts${[0]}` === facts[0])
+            renderFacts(facts[0])
             facts = data.slice(1);
-            for (let i = 0; i < facts.length; i++) { 
-                const fact = facts[i];
-                renderFact(`facts[${i}]!`);
-            };
-    }).catch(error => {
-        console.error('Error:', error);
-    })
-};
+            facts.forEach(renderFacts)
+
+
+            })
+        }
+//var sliders = [].slice.call(document.getElementsByClassName("sliderControlLi"));
+// sliders.forEach(function (element, index){
+// element.addEventListener("click", function(){
+// console.log("you clicked slider controler " +index + "!")
+
+
+function renderFacts(factoid){
     
+    const factsCard = document.createElement("div");
+    factsCard.id = "facts-card";
+    const factsTitle = document.createElement("h3");
+    factsTitle.textContent = `${factoid.title}`;
+    const factsContent = document.createElement("p");
+    factsContent.textContent = `${factoid.fact}`;
+    let nextButton = document.createElement("button");
+    nextButton.id = `${factoid.id}`;
+    nextButton.className = "button"
+    nextButton.innerText = "Read Next Fact";
+    factsContainer.appendChild(factsCard);
+    factsCard.append(factsTitle);
+    factsCard.append(factsContent);
+    factsCard.append(nextButton);
+}
+
+        
+        
+        
+
+function initiateFactsApp() {
+    fetchFacts();
 };
 
 initiateFactsApp();
-        
