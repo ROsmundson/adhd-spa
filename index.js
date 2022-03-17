@@ -6,12 +6,17 @@ const factsContainer = document.getElementById("facts-container")
 //const userStoryContainer = document.getElementById("")
 //----------------------------------------------------------------
 //Page load notification
+
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-//construct and prepare nodes to be rendered upon fetch
-function renderFacts(factoid){
+function initiateFactsApp() {
+    loadFact();
+
+//construct and prepare nodes to be dynamically rendered upon fetch
+function renderFact(factoid){
     const factsCard = document.createElement("div");
     factsCard.id = "facts-card"
     factsCard.innerHTML = `<h3>${factoid.title}</h3>`;
@@ -25,6 +30,13 @@ function renderFacts(factoid){
     factsContainer.appendChild(factsCard);
     factsCard.append(factsContent);
     factsCard.append(nextButton);
+
+    nextButton.addEventListener('click', () => {
+        factsCard.replaceChildren();
+        renderFact();
+        //after removing fact 1, render next fact from facts array
+
+    })
 };
 
 function loadFact() {
@@ -32,32 +44,18 @@ function loadFact() {
     .then(response => response.json())
     .then(data => {
         let facts = data;
-        renderFacts(facts[0]);
-        let nextButton = document.getElementById('next-button')
-        nextButton.addEventListener('click', () => {
-            //console.log('I heard you!')
-            deleteCurrentFact();
-            facts = data.slice(1)
-            //console.log(facts)
-            renderFacts(facts[0])
-
-        });
-        
+        renderFact(facts[0]);
+            facts = data.slice(1);
+            for (let i = 0; i < facts.length; i++) { 
+                const fact = facts[i];
+                renderFact(`facts[${i}]!`);
+            };
     }).catch(error => {
         console.error('Error:', error);
     })
 };
-
-function deleteCurrentFact(){
-    let currentFact = document.getElementById('facts-card');
-    currentFact.remove();
-    console.log(renderFacts)
-}
-
-
-function initiateTheFacts() {
-    loadFact()
+    
 };
 
-initiateTheFacts();
+initiateFactsApp();
         
