@@ -12,57 +12,44 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-nextButton = document.getElementsByClassName('button')
-console.log(nextButton)
-nextButton.addEventListener('click', () => console.log("I was clicked"))
-console.log(button)
-
-
 //construct and prepare nodes to be dynamically rendered upon fetch
 
-function fetchFacts() {
-    fetch(BASE_URL + '/TheFacts')
-    .then(response => response.json())
-    .then(data => { 
-        let facts = data
-            if(`facts${[0]}` === facts[0])
-            renderFacts(facts[0])
-            facts = data.slice(1);
-            facts.forEach(renderFacts)
-
-
-            })
-        }
 //var sliders = [].slice.call(document.getElementsByClassName("sliderControlLi"));
 // sliders.forEach(function (element, index){
-// element.addEventListener("click", function(){
-// console.log("you clicked slider controler " +index + "!")
-
-
+    // element.addEventListener("click", function(){
+        // console.log("you clicked slider controler " +index + "!")
+        
+function loadFacts() {
+    fetch(BASE_URL + '/TheFacts')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(renderFacts);
+    })
+};
+        
 function renderFacts(factoid){
-    
     const factsCard = document.createElement("div");
-    factsCard.id = "facts-card";
+    factsCard.id = `fact-card-${factoid.id}`;
+    factsCard.className = "facts-cards";
     const factsTitle = document.createElement("h3");
     factsTitle.textContent = `${factoid.title}`;
     const factsContent = document.createElement("p");
-    factsContent.textContent = `${factoid.fact}`;
-    let nextButton = document.createElement("button");
-    nextButton.id = `${factoid.id}`;
-    nextButton.className = "button"
-    nextButton.innerText = "Read Next Fact";
-    factsContainer.appendChild(factsCard);
-    factsCard.append(factsTitle);
-    factsCard.append(factsContent);
-    factsCard.append(nextButton);
+    factsContent.textContent = `${factoid.fact}`;     
+    const factsButton = document.createElement("button");
+    factsButton.id = `fact-button-${factoid.id}`;
+    factsButton.className = "facts-button";
+    factsButton.textContent = "Read Next Fact";
+    const br = document.createElement("br");
+    //factsButton.style.cssFloat = "right";
+    factsContainer.append(factsCard);
+    factsCard.append(factsTitle, factsContent);
+    factsCard.appendChild(br);
+    factsCard.append(factsButton);
 }
 
-        
-        
-        
 
 function initiateFactsApp() {
-    fetchFacts();
+    loadFacts();
 };
 
 initiateFactsApp();
