@@ -1,32 +1,18 @@
-//Main Node grabbers:
-const BASE_URL = 'http://localhost:3000';
-const factsContainer = document.getElementById("facts-container")
-//const homeNav = document.getElementById("home")
-//const awayNav = document.getElementById("about-me")
-//const userStoryContainer = document.getElementById("")
-//----------------------------------------------------------------
-//Page load notification
 
-
+    //Page load notification
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
 
-//construct and prepare nodes to be dynamically rendered upon fetch
+//Main Node grabbers:
+const BASE_URL = 'http://localhost:3000';
+const factsContainer = document.getElementById("facts-container");
 
-//var sliders = [].slice.call(document.getElementsByClassName("sliderControlLi"));
-// sliders.forEach(function (element, index){
-    // element.addEventListener("click", function(){
-        // console.log("you clicked slider controler " +index + "!")
-        
-function loadFacts() {
-    fetch(BASE_URL + '/TheFacts')
-    .then(response => response.json())
-    .then(data => {
-        data.forEach(renderFacts);
-    })
-};
-        
+
+//const homeNav = document.getElementById("home")
+//const awayNav = document.getElementById("about-me")
+//const userStoryContainer = document.getElementById("")
+//----------------------------------------------------------------
 function renderFacts(factoid){
     const factsCard = document.createElement("div");
     factsCard.id = `fact-card-${factoid.id}`;
@@ -40,16 +26,53 @@ function renderFacts(factoid){
     factsButton.className = "facts-button";
     factsButton.textContent = "Read Next Fact";
     const br = document.createElement("br");
-    //factsButton.style.cssFloat = "right";
     factsContainer.append(factsCard);
     factsCard.append(factsTitle, factsContent);
     factsCard.appendChild(br);
     factsCard.append(factsButton);
+
+    factsButton.addEventListener("click", () => {
+        nextFact();
+    })
 }
 
-
-function initiateFactsApp() {
-    loadFacts();
+function loadFact() {
+    fetch(BASE_URL + '/TheFacts/1')
+    .then(response => response.json())
+    .then(data => renderFacts(data));
 };
 
-initiateFactsApp();
+function nextFact() {
+    fetch(BASE_URL + '/TheFacts')
+    .then(response => response.json())
+    .then(data => {
+        let facts = data.slice(1);
+        console.log(facts)
+    });
+};
+
+// var buttons = document.getElementsByTagName('button');
+// for (let i = 0; i < buttons.length; i++) {
+    // let button = buttons[i];
+    // let type = button.getAttribute('type') || 'submit'; // Submit is the default
+    
+    // const input = document.getElementById('input');
+// input.addEventListener('click', function() {
+//   alert('I was clicked!');
+
+
+    
+
+function initiateFactsApp() {
+    loadFact();
+    //handleClick();
+};
+
+initiateFactsApp();////END 0F CODE!!!
+
+
+    
+
+            
+                
+                    
