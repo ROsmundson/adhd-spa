@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //Main Node grabbers:
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
-
-
+const factsCard = document.getElementsByClassName("facts-cards")
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
@@ -21,35 +20,55 @@ function renderFacts(factoid){
     factsTitle.textContent = `${factoid.title}`;
     const factsContent = document.createElement("p");
     factsContent.textContent = `${factoid.fact}`;     
-    const factsButton = document.createElement("button");
-    factsButton.id = `fact-button-${factoid.id}`;
+    const factsButton = document.getElementById("facts-button");
+    factsButton.id = "facts-button"
     factsButton.className = "facts-button";
     factsButton.textContent = "Read Next Fact";
     const br = document.createElement("br");
     factsContainer.append(factsCard);
     factsCard.append(factsTitle, factsContent);
     factsCard.appendChild(br);
-    factsCard.append(factsButton);
+    factsContainer.append(factsButton);
+    }
 
-    factsButton.addEventListener("click", () => {
-        nextFact();
-    })
-}
-
-function loadFact() {
-    fetch(BASE_URL + '/TheFacts/1')
+function loadFacts() {
+    fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => renderFacts(data));
+    .then(data => {
+        let welcome = document.getElementById("welcome");
+        let button = document.getElementById("facts-button");
+        button.addEventListener("click", () => {
+            welcome.remove();
+            let facts = data;
+            renderFacts(facts[0])
+            
+            facts = facts.slice(1)
+            console.log(facts)
+            });
+        });
 };
+
+    // for (var i = 0; i < 5; i++) {
+    //     var button = document.createElement("button");
+    //     button.innerText = i;
+    //     (function(index){
+    //       button.addEventListener("click", function() {
+    //         console.log(index)
+    //       })
+    //     })(i)
+    //     buttonsContainer.appendChild(button);
+      
+    //   }
+    //   console.log(i);
+        
 
 function nextFact() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => {
-        let facts = data.slice(1);
-        console.log(facts)
-    });
+    .then(data => console.log(data));
 };
+
+        //WORK ON PLACING THINGS INSIDE EVENT LISTENER
 
 // var buttons = document.getElementsByTagName('button');
 // for (let i = 0; i < buttons.length; i++) {
@@ -64,9 +83,10 @@ function nextFact() {
     
 
 function initiateFactsApp() {
-    loadFact();
+    loadFacts();
+
     //handleClick();
-};
+}
 
 initiateFactsApp();////END 0F CODE!!!
 
