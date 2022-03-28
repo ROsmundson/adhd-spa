@@ -34,19 +34,58 @@ function renderFacts(factoid){
 function loadFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => {
+    .then(data => { data.addEventListener(() => {})
         let welcome = document.getElementById("welcome");
         let button = document.getElementById("facts-button");
-        button.addEventListener("click", () => {
-            welcome.remove();
-            let facts = data;
-            renderFacts(facts[0])
-            
-            facts = facts.slice(1)
-            console.log(facts)
-            });
+        let factCard = document.getElementById("fact-card-1");
+        //button.addEventListener("click", () => {
+            switch (button, welcome, factCard) {
+                case `if (
+                    let i;
+                    
+                    )`:
+            }
+            //});
         });
-};
+ };
+
+            // switch (expr) {
+            //     case 'Oranges':
+            //       console.log('Oranges are $0.59 a pound.');
+            //       break;
+            //     case 'Apples':
+            //       console.log('Apples are $0.32 a pound.');
+            //       break;
+            //     case 'Bananas':
+            //       console.log('Bananas are $0.48 a pound.');
+            //       break;
+            //     case 'Cherries':
+            //       console.log('Cherries are $3.00 a pound.');
+            //       break;
+            //     case 'Mangoes':
+            //     case 'Papayas':
+            //       console.log('Mangoes and papayas are $2.79 a pound.');
+            //       break;
+            //     default:
+            //       console.log('Sorry, we are out of ' + expr + '.');
+            //   }
+              
+            //   console.log("Is there anything else you'd like?");
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // for (var i = 0; i < 5; i++) {
     //     var button = document.createElement("button");

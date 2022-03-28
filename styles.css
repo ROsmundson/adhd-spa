@@ -42,11 +42,11 @@ div.facts-cards {
   position: relative;
 }
 
-button.facts-button {
+/* button.facts-button {
   position: absolute;
   right: 20px;
   bottom: 0;
-}
+} */
 /* About me */
 article.shadowbox {
   width: 42em;
