@@ -34,21 +34,18 @@ function renderFacts(factoid){
 function loadFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => { data.addEventListener(() => {})
-        let welcome = document.getElementById("welcome");
+    .then(data => {
         let button = document.getElementById("facts-button");
-        let factCard = document.getElementById("fact-card-1");
-        //button.addEventListener("click", () => {
-            switch (button, welcome, factCard) {
-                case `if (
-                    let i;
-                    
-                    )`:
-            }
-            //});
+        let welcome = document.getElementById("welcome");
+        let factsCard = document.getElementById(`facts-card-`)
+        
+        button.addEventListener("click", (facts, index) => {
+            welcome.remove();
         });
- };
-
+    });
+}
+            
+                
             // switch (expr) {
             //     case 'Oranges':
             //       console.log('Oranges are $0.59 a pound.');
@@ -71,55 +68,6 @@ function loadFacts() {
             //   }
               
             //   console.log("Is there anything else you'd like?");
-              
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // for (var i = 0; i < 5; i++) {
-    //     var button = document.createElement("button");
-    //     button.innerText = i;
-    //     (function(index){
-    //       button.addEventListener("click", function() {
-    //         console.log(index)
-    //       })
-    //     })(i)
-    //     buttonsContainer.appendChild(button);
-      
-    //   }
-    //   console.log(i);
-        
-
-function nextFact() {
-    fetch(BASE_URL + '/TheFacts')
-    .then(response => response.json())
-    .then(data => console.log(data));
-};
-
-        //WORK ON PLACING THINGS INSIDE EVENT LISTENER
-
-// var buttons = document.getElementsByTagName('button');
-// for (let i = 0; i < buttons.length; i++) {
-    // let button = buttons[i];
-    // let type = button.getAttribute('type') || 'submit'; // Submit is the default
-    
-    // const input = document.getElementById('input');
-// input.addEventListener('click', function() {
-//   alert('I was clicked!');
-
-
-    
 
 function initiateFactsApp() {
     loadFacts();
