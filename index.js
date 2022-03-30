@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCard = document.getElementsByClassName("facts-cards")
+
+
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
@@ -16,6 +18,7 @@ function renderFacts(factoid){
     const factsCard = document.createElement("div");
     factsCard.id = `fact-card-${factoid.id}`;
     factsCard.className = "facts-cards";
+    factsCard.style.display = 'none'
     const factsTitle = document.createElement("h3");
     factsTitle.textContent = `${factoid.title}`;
     const factsContent = document.createElement("p");
@@ -31,19 +34,30 @@ function renderFacts(factoid){
     factsContainer.append(factsButton);
     }
 
-function loadFacts() {
+function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
     .then(data => {
-        let button = document.getElementById("facts-button");
-        let welcome = document.getElementById("welcome");
-        let factsCard = document.getElementById(`facts-card-`)
+        let facts = data;
+        facts.forEach(renderFacts);
         
-        button.addEventListener("click", (facts, index) => {
-            welcome.remove();
-        });
-    });
+        
+//         document.getElementById("okButton")
+//         .addEventListener("click", function() {
+//   document.getElementById("welcome").hidden = true;
+//   document.getElementById("awesome").hidden = false;
+// }, false);
+    })
 }
+
+function loadRemoveFacts(data) {
+
+}
+// let cars = ["Tesla", "Ferrari", "Lamborghini", "Audi"];
+
+// for(let i = 0; i < cars.length; i++) {
+//   console.log(cars[i]);
+
             
                 
             // switch (expr) {
@@ -70,7 +84,7 @@ function loadFacts() {
             //   console.log("Is there anything else you'd like?");
 
 function initiateFactsApp() {
-    loadFacts();
+    fetchFacts();
 
     //handleClick();
 }

@@ -23,7 +23,6 @@ li a:hover {
   color: white
 }
 
-
 /* Body */
 body {
   background: #368dda;
@@ -42,12 +41,6 @@ div.facts-cards {
   position: relative;
 }
 
-/* button.facts-button {
-  position: absolute;
-  right: 20px;
-  bottom: 0;
-} */
-/* About me */
 article.shadowbox {
   width: 42em;
   border: 1px solid #333;
