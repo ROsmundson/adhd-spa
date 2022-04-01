@@ -9,7 +9,6 @@ const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCard = document.getElementsByClassName("facts-cards");
 
-
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
@@ -38,32 +37,34 @@ function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
     .then(data => {
-        data.forEach(renderFacts)
+        data.forEach(renderFacts);
         loadRemoveFacts(data);
-    });
+    })
 }
 
 function loadRemoveFacts(data) {
-    let facts = data
-    console.log(facts)
     let welcome = document.getElementById("welcome");
-    let button = document.getElementById("welcome-button");
-    button.addEventListener('click', () => {
-        welcome.remove();
-        
-        
-        });
-    };
-        // let facts = data
-        // let factCard = document.getElementById(`fact-card-${facts.id}`)
-        //     factId = (factCard.id)
-        //     forEach(factIdconsole.log(factId))
-        //     })
-        // }
+    let buttons = document.getElementsByClassName("facts-button")
+    let facts = (document.getElementsByClassName("facts-cards"))
+
+    buttonsArray = Array.from(buttons);
+    factsArray = Array.from(facts);
+    console.log(buttonsArray);
+    console.log(factsArray);
+    console.log(buttonsArray[0])
+    console.log(factsArray[0])
+
+    
+
+
+    
+    
+
+}
 
 
 
-            
+        //let button = document.getElementById('fact-button-1');
                 
             // switch (expr) {
             //     case 'Oranges':
