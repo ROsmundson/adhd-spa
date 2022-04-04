@@ -8,10 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCards = document.getElementsByClassName("facts-cards");
+
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
 //----------------------------------------------------------------
+
+//Helper Functions:
+function readNextFact(facts, buttons) {
+    facts =document.getElementsByClassName('facts-cards');
+    buttons = document.getElementsByClassName('facts-buttons')
+}
+
+
 function renderFacts(factoid){
     const factsCards = document.createElement("div");
     factsCards.id = `fact-card-${factoid.id}`;
@@ -23,7 +32,7 @@ function renderFacts(factoid){
     factsContent.textContent = `${factoid.fact}`;     
     const factsButton = document.createElement("facts-button");
     factsButton.id = `"fact-button-${factoid.id}`;
-    factsButton.className = "facts-button";
+    factsButton.className = "facts-buttons";
     factsButton.textContent = "Read Next Fact";
     const br = document.createElement("br");
     factsContainer.append(factsCards);
@@ -35,21 +44,51 @@ function renderFacts(factoid){
 function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(data => {
-        data.forEach(renderFacts);
-        loadRemoveFacts(data);
+    .then(facts => {
+        facts.forEach(renderFacts);
+        loadRemoveFacts(facts);
 
     })
 }
 
-function loadRemoveFacts() {
-    let facts = document.getElementsByClassName("facts-cards")
-    factsList = Array.from(facts);
-        factsList.forEach((fact) => {
-            console.log(fact.)
-            fact.style.display = 'block';
-        })
-    }
+function loadRemoveFacts(facts) {
+    facts.forEach(fact => {
+        let factsCardList = Array.from(document.getElementsByClassName('facts-cards'));
+        let card = fact;
+        console.log(card.id)
+        console.log(card)
+        console.log(factsCardList);
+        
+    });
+}
+        
+        // console.log(factoid[0].id)
+        // console.log(fact, factoid);
+
+        // let i = 1; i < factCardList.length; i++;
+        // if( fact.id = factCardList.id) {
+
+        // }
+        
+        // if (fact.id === factCard[i]) {
+            //     factCard.style.display = 'block';
+            // };
+
+//         let factsList = Array.from(document.getElementsByClassName('facts-cards'));
+//         factsList.forEach(factoid => {
+//             let i = 0
+//             let factoid1 = factsList[i];
+//             console.log(factoid1);
+//         })
+// }
+
+
+        // let factCards = document.getElementsByClassName('facts-cards');
+        // let factsList = Array.from(factsCards);
+
+        // console.log(factCards);
+        // console.log(factsList);
+
 
   
  
