@@ -7,17 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 //Main Node grabbers:
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
-const factsCard = document.getElementsByClassName("facts-cards");
-
+const factsCards = document.getElementsByClassName("facts-cards");
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
 //----------------------------------------------------------------
 function renderFacts(factoid){
-    const factsCard = document.createElement("div");
-    factsCard.id = `fact-card-${factoid.id}`;
-    factsCard.className = "facts-cards";
-    factsCard.style.display = 'none';
+    const factsCards = document.createElement("div");
+    factsCards.id = `fact-card-${factoid.id}`;
+    factsCards.className = "facts-cards";
+    factsCards.style.display = 'none';
     const factsTitle = document.createElement("h3");
     factsTitle.textContent = `${factoid.title}`;
     const factsContent = document.createElement("p");
@@ -27,10 +26,10 @@ function renderFacts(factoid){
     factsButton.className = "facts-button";
     factsButton.textContent = "Read Next Fact";
     const br = document.createElement("br");
-    factsContainer.append(factsCard);
-    factsCard.append(factsTitle, factsContent);
-    factsCard.appendChild(br);
-    factsCard.append(factsButton);
+    factsContainer.append(factsCards);
+    factsCards.append(factsTitle, factsContent);
+    factsCards.appendChild(br);
+    factsCards.append(factsButton);
     }
 
 function fetchFacts() {
@@ -39,33 +38,21 @@ function fetchFacts() {
     .then(data => {
         data.forEach(renderFacts);
         loadRemoveFacts(data);
+
     })
 }
 
-function loadRemoveFacts(data) {
-    let welcome = document.getElementById("welcome");
-    let buttons = document.getElementsByClassName("facts-button")
-    let facts = (document.getElementsByClassName("facts-cards"))
+function loadRemoveFacts() {
+    let facts = document.getElementsByClassName("facts-cards")
+    factsList = Array.from(facts);
+        factsList.forEach((fact) => {
+            console.log(fact.)
+            fact.style.display = 'block';
+        })
+    }
 
-    buttonsArray = Array.from(buttons);
-    factsArray = Array.from(facts);
-    console.log(buttonsArray);
-    console.log(factsArray);
-    console.log(buttonsArray[0])
-    console.log(factsArray[0])
-
-    
-
-
-    
-    
-
-}
-
-
-
-        //let button = document.getElementById('fact-button-1');
-                
+  
+ 
             // switch (expr) {
             //     case 'Oranges':
             //       console.log('Oranges are $0.59 a pound.');
@@ -95,11 +82,4 @@ function initiateFactsApp() {
     //handleClick();
 }
 
-initiateFactsApp();////END 0F CODE!!!
-
-
-    
-
-            
-                
-                    
+initiateFactsApp();////END 0F CODE!!!                   
