@@ -52,17 +52,19 @@ function fetchFacts() {
 }
 
 function loadRemoveFacts(facts) {
-    facts.forEach(fact => {
-        let factsCardList = Array.from(document.getElementsByClassName('facts-cards'));
-        let card = fact;
-        console.log(card.id)
-        console.log(card)
-        console.log(factsCardList);
-        
-    });
+    let factsCards = Array.from(document.getElementsByClassName('facts-cards'));
+    let factsButtons = Array.from(document.getElementsByClassName('facts-buttons'));
+    console.log(factsButtons);
+    let nextCard = factsCards[0];
+    factsCards.forEach(() => console.log(nextCard));
+
+    facts.forEach(fact => console.log(fact));
 }
         
-        // console.log(factoid[0].id)
+        
+
+
+// console.log(factoid[0].id)
         // console.log(fact, factoid);
 
         // let i = 1; i < factCardList.length; i++;
