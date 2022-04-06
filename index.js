@@ -1,5 +1,4 @@
-
-    //Page load notification
+//Page load notification
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
@@ -13,12 +12,6 @@ const factsCards = document.getElementsByClassName("facts-cards");
 //const awayNav = document.getElementById("about-me")
 //const userStoryContainer = document.getElementById("")
 //----------------------------------------------------------------
-
-//Helper Functions:
-function readNextFact(facts, buttons) {
-    facts =document.getElementsByClassName('facts-cards');
-    buttons = document.getElementsByClassName('facts-buttons')
-}
 
 
 function renderFacts(factoid){
@@ -52,48 +45,31 @@ function fetchFacts() {
 }
 
 function loadRemoveFacts(facts) {
-    let factsCards = Array.from(document.getElementsByClassName('facts-cards'));
     let factsButtons = Array.from(document.getElementsByClassName('facts-buttons'));
-    console.log(factsButtons);
-    let nextCard = factsCards[0];
-    factsCards.forEach(() => console.log(nextCard));
-
-    facts.forEach(fact => console.log(fact));
-}
-        
-        
-
-
-// console.log(factoid[0].id)
-        // console.log(fact, factoid);
-
-        // let i = 1; i < factCardList.length; i++;
-        // if( fact.id = factCardList.id) {
-
-        // }
-        
-        // if (fact.id === factCard[i]) {
-            //     factCard.style.display = 'block';
-            // };
-
-//         let factsList = Array.from(document.getElementsByClassName('facts-cards'));
-//         factsList.forEach(factoid => {
-//             let i = 0
-//             let factoid1 = factsList[i];
-//             console.log(factoid1);
-//         })
-// }
+    let factsCards = Array.from(document.getElementsByClassName('facts-cards'));
+    factsButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let buttonId = `${button.id}`;
+            //console.log(button);
+            
+            factsCards.forEach(card => {
+                let cardId = `${card.id}`;
+                //console.log(card);
+                })
+                facts.forEach(fact => {
+                    let factId = `${fact.id}`;
+                    //console.log(fact);
+                })
 
 
-        // let factCards = document.getElementsByClassName('facts-cards');
-        // let factsList = Array.from(factsCards);
+                    switch(button) {
+                        case buttonId:
+                            console.log(button) 
+                    }
 
-        // console.log(factCards);
-        // console.log(factsList);
-
-
-  
- 
+            })
+        })
+    }
             // switch (expr) {
             //     case 'Oranges':
             //       console.log('Oranges are $0.59 a pound.');
