@@ -47,56 +47,25 @@ function fetchFacts() {
 function loadRemoveFacts(facts) {
     let factsButtons = Array.from(document.getElementsByClassName('facts-buttons'));
     let factsCards = Array.from(document.getElementsByClassName('facts-cards'));
+    let i;
     factsButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            let buttonId = `${button.id}`;
-            //console.log(button);
-            
+        button.addEventListener("click", () => {
             factsCards.forEach(card => {
-                let cardId = `${card.id}`;
-                //console.log(card);
-                })
-                facts.forEach(fact => {
-                    let factId = `${fact.id}`;
-                    //console.log(fact);
-                })
-
-
-                    switch(button) {
-                        case buttonId:
-                            console.log(button) 
-                    }
-
+                let cardId = card.id
+                console.log(cardId);
+            })
+            
             })
         })
     }
-            // switch (expr) {
-            //     case 'Oranges':
-            //       console.log('Oranges are $0.59 a pound.');
-            //       break;
-            //     case 'Apples':
-            //       console.log('Apples are $0.32 a pound.');
-            //       break;
-            //     case 'Bananas':
-            //       console.log('Bananas are $0.48 a pound.');
-            //       break;
-            //     case 'Cherries':
-            //       console.log('Cherries are $3.00 a pound.');
-            //       break;
-            //     case 'Mangoes':
-            //     case 'Papayas':
-            //       console.log('Mangoes and papayas are $2.79 a pound.');
-            //       break;
-            //     default:
-            //       console.log('Sorry, we are out of ' + expr + '.');
-            //   }
-              
-            //   console.log("Is there anything else you'd like?");
+
+           
+    
+
+
 
 function initiateFactsApp() {
     fetchFacts();
-
-    //handleClick();
 }
 
 initiateFactsApp();////END 0F CODE!!!                   
