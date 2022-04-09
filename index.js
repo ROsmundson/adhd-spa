@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCards = document.getElementsByClassName("facts-cards");
+const factCard = document.getElementsByClassName("facts-cards")
+const cardsButton = document.createElement("button");
+cardsButton.textContent = "Read the Facts"
+const welcome = document.getElementById("welcome");
 
 //const homeNav = document.getElementById("home")
 //const awayNav = document.getElementById("about-me")
@@ -18,50 +22,42 @@ function renderFacts(factoid){
     const factsCards = document.createElement("div");
     factsCards.id = `fact-card-${factoid.id}`;
     factsCards.className = "facts-cards";
-    factsCards.style.display = 'none';
     const factsTitle = document.createElement("h3");
     factsTitle.textContent = `${factoid.title}`;
     const factsContent = document.createElement("p");
-    factsContent.textContent = `${factoid.fact}`;     
-    const factsButton = document.createElement("facts-button");
-    factsButton.id = `"fact-button-${factoid.id}`;
-    factsButton.className = "facts-buttons";
-    factsButton.textContent = "Read Next Fact";
-    const br = document.createElement("br");
+    factsContent.textContent = `${factoid.fact}`;
     factsContainer.append(factsCards);
     factsCards.append(factsTitle, factsContent);
-    factsCards.appendChild(br);
-    factsCards.append(factsButton);
-    }
+    factsContainer.appendChild(cardsButton);
+    }    
 
 function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(facts => {
-        facts.forEach(renderFacts);
-        loadRemoveFacts(facts);
-
-    })
+    .then(facts => loadRemoveFacts(facts));
 }
 
 function loadRemoveFacts(facts) {
-    let factsButtons = Array.from(document.getElementsByClassName('facts-buttons'));
-    let factsCards = Array.from(document.getElementsByClassName('facts-cards'));
-    let i;
-    factsButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            factsCards.forEach(card => {
-                let cardId = card.id
-                console.log(cardId);
-            })
+    let cards = facts
+    factsContainer.appendChild(cardsButton);
+    cardsButton.addEventListener("click", (e) => {
+        welcome.remove();
+        renderFacts(cards[0])
+        
+        cardsButton.textContent = 'Read Another Fact!'
+        for(let i = 0; i < facts.length; i++) {
+            cards = facts[i]
+            console.log(cards);
             
-            })
-        })
-    }
+          
 
-           
-    
+        }   
+    })
+}
 
+
+
+            
 
 
 function initiateFactsApp() {
