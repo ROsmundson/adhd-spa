@@ -8,9 +8,10 @@ const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCards = document.getElementsByClassName("facts-cards");
 const factCard = document.getElementsByClassName("facts-cards")
+const welcome = document.getElementById("welcome");
+const welcomeButton = document.getElementById("welcome-button") 
 const cardsButton = document.createElement("button");
 cardsButton.textContent = "Read the Facts";
-const currentFact = document.getElementsByClassName("facts-cards");
 
 
 //const homeNav = document.getElementById("home")
@@ -19,7 +20,7 @@ const currentFact = document.getElementsByClassName("facts-cards");
 //----------------------------------------------------------------
 
 
-function renderFacts(factoid){
+function createFactsCards(factoid){
     const factsCards = document.createElement("div");
     factsCards.id = `fact-card-${factoid.id}`;
     factsCards.className = "facts-cards";
@@ -35,33 +36,64 @@ function renderFacts(factoid){
 function fetchFacts() {
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
-    .then(facts => {
-        loadCards(facts);
-        //removeCards(facts);
-    })
+    .then(facts => loadFacts(facts));
 }
 
-function loadCards(facts) {
+function loadFacts(facts) {
     let cards = facts
-        factsContainer.appendChild(cardsButton);
-        cardsButton.addEventListener("click", () => {
-            cardsButton.textContent = "Read Another Fact!";
-            for (let i = 0; i < cards.length; i++) {
-                console.log(factCard);
-                renderFacts(cards[i])
-                console.log(cards[i]);
-                console.log(factsContainer);
-                console.log(cardsButton);
+    welcomeButton.addEventListener('click', () => {
+        welcome.remove();
+        welcomeButton.remove();
+        let button = document.querySelector('button');
+            for(let i = 0; i < cards.length; i++) {
+                let card = cards[i];
+                //console.log(card);
+                if(card === cards[i]){
+                switch (card.id) {
+                    case 1:
+                        createFactsCards(card);
+                        button = document.querySelector('button')
+                        button.addEventListener('click', () => {
+                                cards = cards.slice(1);
+                                    console.log(factsCards[i]);
+                                    currentFact = factsCards[i];
+                                    currentFact.remove();
+                                    currentFact = cards[i];
+                                    console.log(cards)
+                                    createFactsCards(currentFact);
+                                    
+                        })
+                }
+            }}
+        })
+    }
+  
 
+                            
+
+                 
+                    
+
+                            
+       
+
+function removeCard(cards) {
+    console.log(cards);
+}
+        
+        
+        
+        function save() {
+            // for(let i = 0; i < cards.length; i++) {
+            // if(facts[i].id = facts[i].id)
+            // renderFacts(facts[i]);
+            // let currentFact = document.getElementById('fact-card-1');
+            // console.log(currentFact);
             }
-
-    })
-}
+            
 
 
-function removeCards() {
-    
-}
+        
             // for(let i = 0; i < cardsButton; i++) {
             //     cards.forEach(() => console.log(cards));
             //         let card = facts[i];
