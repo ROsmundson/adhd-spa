@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
 const BASE_URL = 'http://localhost:3000';
 const factsContainer = document.getElementById("facts-container");
 const factsCards = document.getElementsByClassName("facts-cards");
-const factCard = document.getElementsByClassName("facts-cards")
 const welcome = document.getElementById("welcome");
 const welcomeButton = document.getElementById("welcome-button") 
 const cardsButton = document.createElement("button");
@@ -54,19 +53,20 @@ function loadFacts(facts) {
                         createFactsCards(card);
                         button = document.querySelector('button')
                         button.addEventListener('click', () => {
-                                cards = cards.slice(1);
-                                    console.log(factsCards[i]);
-                                    currentFact = factsCards[i];
-                                    currentFact.remove();
-                                    currentFact = cards[i];
-                                    console.log(cards)
-                                    createFactsCards(currentFact);
-                                    
+                                    cards = cards.slice(1);
+                        console.log(factsCards)
+                        let currentFact = factsCards
+                        currentFact.remove()
+                        let nextFact = cards[i];
+                                    console.log(nextFact)
+                                    createFactsCards(nextFact);
                         })
                 }
-            }}
-        })
-    }
+            }
+        }
+    })
+}
+      
   
 
                             
