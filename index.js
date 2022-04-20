@@ -1,4 +1,3 @@
-//Page load notification
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Page has loaded");
 });
@@ -8,6 +7,7 @@ const welcome = document.getElementById("welcome-card");
 const welcomeButton = document.createElement('button');
 const factsContainer = document.getElementById("facts-container");
 const cardButton = document.getElementsByClassName("cards-button")
+const home = document.querySelector("#facts-page")
 
 
 function createFactsCards(facts) {
@@ -31,9 +31,7 @@ function createFactsCards(facts) {
     factsCards.append(factsTitle,factsContent);
     factsCards.append(lineBreak);
     factsCards.append(cardsButton);
-    let notHelpful = document.getElementById('10')
-    //factsCards.style.display = "none"
-    console.log(factsCards)
+    factsCards.style.display = "none"
 }
 
 function fetchFacts() {  
@@ -55,7 +53,6 @@ function doStuff(facts) {
         card.style.display = 'block';
             
                 buttons.forEach(button => {
-                        console.log(button.id)
                         button.addEventListener('click', () => {
                             for(let i = 0; i < cards.length; i++) {
                                 
@@ -63,34 +60,16 @@ function doStuff(facts) {
 
                             card.remove();
                             card = document.querySelector(".facts-cards");
-                            card.remove()
-                            // card.innerHTML = "<h1>That's all folks! Thank you for checking out the app!</h1>"
+                            card.style.display = 'block'
+                            if(card.id === 'facts-card-10'){
+                                factsContainer.innerHTML = "<h2>Thanks For Checking out the facts App!</h2>"
+                            }
                         })
                     })
                 })
             }
                             
-            // for (const user of users) {  
-            //     if (user.id === 2) {
-            //       break            // exits the loop early
-            //     }               
-          
-
-
-            // for( let i = 0; i < cards.length; i++) {
-            // let card = cards[i];
-            //     console.log(button);
-            //     console.log(card);
-            // }
-
-    
-    
-
-//         let buttons = document.querySelectorAll('.cards-button')
-//         buttons.addEventListener('click', () => {
-//             console.log(buttons)
-//         })
-// }
+ 
 
 function navHome() {
     const homeButton = document.getElementById("home");
@@ -115,4 +94,4 @@ function initiateFactsApp() {
     
 }
 
-initiateFactsApp();////END 0F CODE!!!                   
+initiateFactsApp();////END 0F CODE!!!    
