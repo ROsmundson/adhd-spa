@@ -4,75 +4,93 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const BASE_URL = 'http://localhost:3000';
+const welcome = document.getElementById("welcome-card");
+const welcomeButton = document.createElement('button');
 const factsContainer = document.getElementById("facts-container");
-const welcome = document.getElementById("welcome")
-const factsButton = document.getElementsByClassName('facts-buttons')
-const button = document.createElement('button');
+const cardButton = document.getElementsByClassName("cards-button")
+
+
+function createFactsCards(facts) {
+    welcomeButton.id = "welcome-button";
+    welcomeButton.className = "cards-button";
+    welcomeButton.textContent = "Read the Facts"
+    const factsCards = document.createElement("div");
+    factsCards.id = `facts-card-${facts.id}`;
+    factsCards.className = "facts-cards";
+    const factsTitle = document.createElement("h3");
+    factsTitle.textContent = `${facts.title}`;
+    const factsContent = document.createElement("p");
+    factsContent.textContent = `${facts.fact}`;
+    const cardsButton = document.createElement('button')
+    cardsButton.className = 'cards-button';
+    cardsButton.id = `${facts.id}`
+    cardsButton.textContent = "Read Next Fact"
+    const lineBreak = document.createElement("br");
+    welcome.append(welcomeButton);
+    factsContainer.append(factsCards);
+    factsCards.append(factsTitle,factsContent);
+    factsCards.append(lineBreak);
+    factsCards.append(cardsButton);
+    let notHelpful = document.getElementById('10')
+    //factsCards.style.display = "none"
+    console.log(factsCards)
+}
 
 function fetchFacts() {  
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
     .then(facts => {
         facts.forEach(fact => createFactsCards(fact));
-    })
-    }
-
-function createFactsCards(factoid){
-    const factsCard = document.createElement("div");
-    factsCard.id = `fact-card-${factoid.id}`;
-    factsCard.className = "facts-cards";
-    const factsTitle = document.createElement("h3");
-    factsTitle.textContent = `${factoid.title}`;
-    const factsContent = document.createElement("p");
-    const factsButton = document.createElement("button")
-    factsButton.id = `button-${factoid.id}`;
-    factsButton.className = "facts-buttons"
-    factsButton.textContent = "Read Next Fact";
-    factsContent.textContent = `${factoid.fact}`;  
-    factsContainer.append(factsCard);
-    factsCard.append(factsTitle, factsContent);
-    factsCard.append(factsButton)
-    //factsCard.style.display = 'none'
-    changeCards();
-};
-
-function changeCards() {
-    welcome.append(button)
-    button.textContent = "Read the Facts"
-    let cards = document.getElementsByClassName('facts-cards');
-    
-    let fact1 = document.getElementById("fact-card-1")
-    // let fact2= document.getElementById("fact-card-2")
-    // let fact3= document.getElementById("fact-card-3")
-    // let fact4= document.getElementById("fact-card-4")
-    // let fact5= document.getElementById("fact-card-5")
-    // let fact6= document.getElementById("fact-card-6")
-    // let fact7= document.getElementById("fact-card-7")
-    // let fact8= document.getElementById("fact-card-8")
-    // let fact9= document.getElementById("fact-card-9")
-    // let fact10= document.getElementById("fact-card-10")
-    button.addEventListener('click', () => {
-        welcome.remove();
-        fact1.style.display = 'block'
-
-        
-        console.log(cards)
-
-
-
-
-
-       
-
+        doStuff(facts);
     })
 }
 
 
+function doStuff(facts) {
+    let cards = facts
+    let buttons = [...cardButton]
+    welcomeButton.addEventListener('click', () => {
+        welcome.remove();
+        let card = document.querySelector(".facts-cards");
+        card.style.display = 'block';
+            
+                buttons.forEach(button => {
+                        console.log(button.id)
+                        button.addEventListener('click', () => {
+                            for(let i = 0; i < cards.length; i++) {
+                                
+                            }
+
+                            card.remove();
+                            card = document.querySelector(".facts-cards");
+                            card.remove()
+                            // card.innerHTML = "<h1>That's all folks! Thank you for checking out the app!</h1>"
+                        })
+                    })
+                })
+            }
+                            
+            // for (const user of users) {  
+            //     if (user.id === 2) {
+            //       break            // exits the loop early
+            //     }               
+          
 
 
+            // for( let i = 0; i < cards.length; i++) {
+            // let card = cards[i];
+            //     console.log(button);
+            //     console.log(card);
+            // }
 
+    
+    
 
-
+//         let buttons = document.querySelectorAll('.cards-button')
+//         buttons.addEventListener('click', () => {
+//             console.log(buttons)
+//         })
+// }
 
 function navHome() {
     const homeButton = document.getElementById("home");
