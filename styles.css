@@ -41,11 +41,17 @@ div.facts-cards {
 
 }
 
-img {
+img.images {
   position: relative;
   width:  650px;
-  height: 850px;
+  height: 800px;
   object-fit: cover;
+}
+
+img.picture {
+  position: relative;
+  width: 400px;
+  height: 300px;
 }
 
 article.shadowbox {

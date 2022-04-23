@@ -71,6 +71,40 @@ function navAbout() {
         title.textContent = ""
     });
 };
+
+let comments = { 
+    id: 1, 
+    name: "name",
+    comment: "comment"
+    }
+
+function commentPosts() {
+    fetch(BASE_URL + '/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(comments),
+    })
+    .then(response => response.json())
+    .then(comments => {
+        console.log('Success', comments);
+    })
+    // .catch(error => {
+    //     console.log(error);
+    // })
+}
+
+function loadComments() {
+
+}
+
+function renderComment(comment) {
+
+}
+
+
+
 //end of code. ititiateFactsApp() up top.
 
 
@@ -78,6 +112,7 @@ function initiateFactsApp() {
     fetchFacts();
     navHome();
     navAbout();
+    commentPosts();
     
 }
 

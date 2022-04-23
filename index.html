@@ -21,6 +21,7 @@
         <h1 id="title"></h1>
         <div id="welcome" class="facts-cards">
             <h1>Welcome to the ADHD Facts App</h1>
+            <img class ="picture" src="https://www.addsolutionsnj.com/wp-content/uploads/2018/04/screenshot31.jpg" alt="ADHD Brain Chart">
             <h3>It's fair to say that ADHD is a hard disorder to understand. Most people know the basics, but there is a lot more going on behind the scenes than most realize. Here are 10 facts you may or may not have known about ADHD!</h3>
         </div>
         <div><div id="facts-container"></div></div>
@@ -51,8 +52,15 @@
             <p>Telling someone you have ADHD usually provokes a more guarded response, as if the person is trying to figure out if you are lying to them?
             <p>Telling someone you are neurodiverse usually evokes curiosity and gives you the opportunity to educate others.</p>
         </article>
-        <h3>Thanks for checking out the app!<br>I hope you learned a few things you didn't already know!</h3>
-        
+        <h3>Thanks for checking out the app!</h3>
+        <form id="comments-form">
+            <p>Comment or Share:</p>
+            <input type="text" id="user" placeholder="User's Name"/><br>
+            <input type="text" style="height: 50px; width: 200px" id="content" placeholder="User's Comment" />
+            <input type="submit" value="Submit" />
+          </form>
+          <div id="user-comments"></div>
+
 </div>
     <script src="index.js"></script>
 </body>
