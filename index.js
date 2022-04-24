@@ -5,10 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
 const BASE_URL = 'http://localhost:3000';
 const welcome = document.getElementById("welcome");
 const welcomeButton = document.createElement('button');
+
 const factsContainer = document.getElementById("facts-container");
-const cards = document.getElementsBy
-const factsPage = document.getElementById("facts-page")
-const aboutPage = document.getElementById("about-page")
+const homePage = document.getElementById("facts-page");
+
+const aboutPage = document.getElementById("about-page");
+
+const commentForm = document.getElementById("comment-form");
+
 
 function createFactsCards(facts) {
     welcomeButton.id = "welcome-button";
@@ -19,14 +23,13 @@ function createFactsCards(facts) {
     factsCards.className = "facts-cards";
     const br = document.createElement("br")
     const factsImage = document.createElement('img')
-    factsImage.src = `${facts.image}`
+    factsImage.src = facts.image;
     factsImage.id = `image-${facts.id}`
     factsImage.className = "images";
     const factsTitle = document.createElement("h1");
-    factsTitle.textContent = `${facts.title}`;
+    factsTitle.textContent = facts.title;
     const factsContent = document.createElement("h3");
-    factsContent.textContent = `${facts.fact}`;
-    const cardsButton = document.createElement('button')
+    factsContent.textContent = facts.fact;
     welcome.append(welcomeButton);
     factsContainer.append(factsCards);
     factsCards.append( factsTitle,factsImage, factsContent, br, br);
@@ -38,8 +41,9 @@ function fetchFacts() {
     .then(response => response.json())
     .then(facts => {
         facts.forEach(fact => createFactsCards(fact));
-        welcomeToFacts(facts)
+        welcomeToFacts(facts);
     })
+    .catch(error => console.log(error));
 }
 
 function welcomeToFacts() {
@@ -54,7 +58,7 @@ function welcomeToFacts() {
 function navHome() {
     const homeButton = document.getElementById("home");
     homeButton.addEventListener('click', () => {
-        factsPage.style.display = "none" ? factsPage.style.display = "block" : factsPage.style.display = "block";
+        homePage.style.display = "none" ? homePage.style.display = "block" : homePage.style.display = "block";
         factsContainer.style.display = "block" ? factsContainer.style.display = "none" : factsContainer.style.display = "none";
         aboutPage.style.display = "block" ? aboutPage.style.display = "none" : aboutPage.style.display = "none";
         welcome.style.display = "none" ? welcome.style.display = "block" : welcome.style.display = "block";
@@ -67,18 +71,31 @@ function navAbout() {
     aboutButton.addEventListener('click', () => {
         aboutPage.style.display = "none" ? aboutPage.style.display = "block" : aboutPage.style.display = "block";
         factsContainer.style.display = "block" ? factsContainer.style.display = "none" : factsContainer.style.display = "none";
-        factsPage.style.display = "block" ? factsPage.style.display = "none" : factsPage.style.display = "none";
+        homePage.style.display = "block" ? homePage.style.display = "none" : homePage.style.display = "none";
         title.textContent = ""
     });
 };
 
-let comments = { 
-    id: 1, 
-    name: "name",
-    comment: "comment"
-    }
+function createComments(comment) {
+    const commentContainer = document.getElementById("user-comments");
+    console.log(commentContainer)
+    const userCard = document.getElementById
+    userCard.id = comment.id;
+    userCard.title = `${comment.name} had this to share:`;
+    userCard.textContent = comment.comment;
+    const br = document.createElement("br");
+    commentContainer.append(userCard, br);
+}
+function fetchUserComments() {
+        fetch(BASE_URL + '/comments')
+        .then(response => response.json())
+        .then(comments => {
+            comments.forEach(createComments);
+        })
+        .catch(error => console.log(error))
+}
 
-function commentPosts() {
+function postComments() {
     fetch(BASE_URL + '/comments', {
         method: 'POST',
         headers: {
@@ -88,22 +105,11 @@ function commentPosts() {
     })
     .then(response => response.json())
     .then(comments => {
-        console.log('Success', comments);
+        forEach(createComments(comments))
     })
-    // .catch(error => {
-    //     console.log(error);
-    // })
-}
-
-function loadComments() {
-
-}
-
-function renderComment(comment) {
-
-}
-
-
+    .catch(error => console.log(error))
+};
+ 
 
 //end of code. ititiateFactsApp() up top.
 
@@ -112,7 +118,6 @@ function initiateFactsApp() {
     fetchFacts();
     navHome();
     navAbout();
-    commentPosts();
     
 }
 
