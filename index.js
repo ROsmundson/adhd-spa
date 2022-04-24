@@ -3,16 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const BASE_URL = 'http://localhost:3000';
+const homePage = document.getElementById("facts-page");
+const aboutPage = document.getElementById("about-page");
 const welcome = document.getElementById("welcome");
 const welcomeButton = document.createElement('button');
-
-const factsContainer = document.getElementById("facts-container");
-const homePage = document.getElementById("facts-page");
-
-const aboutPage = document.getElementById("about-page");
-
-const commentForm = document.getElementById("comment-form");
-
+const factsSection = document.getElementById("facts-container");
+const commentsForm = document.querySelector("#comment-form")
 
 function createFactsCards(facts) {
     welcomeButton.id = "welcome-button";
@@ -31,9 +27,9 @@ function createFactsCards(facts) {
     const factsContent = document.createElement("h3");
     factsContent.textContent = facts.fact;
     welcome.append(welcomeButton);
-    factsContainer.append(factsCards);
+    factsSection.append(factsCards);
     factsCards.append( factsTitle,factsImage, factsContent, br, br);
-    factsContainer.style.display = "none";
+    factsSection.style.display = "none";
 }
 
 function fetchFacts() {  
@@ -41,15 +37,16 @@ function fetchFacts() {
     .then(response => response.json())
     .then(facts => {
         facts.forEach(fact => createFactsCards(fact));
-        welcomeToFacts(facts);
+        factsOn(facts);
     })
     .catch(error => console.log(error));
 }
 
-function welcomeToFacts() {
+function factsOn() {
+    
     welcomeButton.addEventListener("click", () => {
         welcome.style.display = "none";
-        factsContainer.style.display = "block";
+        factsSection.style.display = "block";
         let title = document.querySelector("#title");
         title.textContent = "Did You Know";
     })
@@ -59,7 +56,7 @@ function navHome() {
     const homeButton = document.getElementById("home");
     homeButton.addEventListener('click', () => {
         homePage.style.display = "none" ? homePage.style.display = "block" : homePage.style.display = "block";
-        factsContainer.style.display = "block" ? factsContainer.style.display = "none" : factsContainer.style.display = "none";
+        factsSection.style.display = "block" ? factsSection.style.display = "none" : factsSection.style.display = "none";
         aboutPage.style.display = "block" ? aboutPage.style.display = "none" : aboutPage.style.display = "none";
         welcome.style.display = "none" ? welcome.style.display = "block" : welcome.style.display = "block";
         
@@ -70,55 +67,89 @@ function navAbout() {
     const aboutButton = document.getElementById("about");
     aboutButton.addEventListener('click', () => {
         aboutPage.style.display = "none" ? aboutPage.style.display = "block" : aboutPage.style.display = "block";
-        factsContainer.style.display = "block" ? factsContainer.style.display = "none" : factsContainer.style.display = "none";
+        factsSection.style.display = "block" ? factsSection.style.display = "none" : factsSection.style.display = "none";
         homePage.style.display = "block" ? homePage.style.display = "none" : homePage.style.display = "none";
         title.textContent = ""
     });
 };
 
-function createComments(comment) {
-    const commentContainer = document.getElementById("user-comments");
-    console.log(commentContainer)
-    const userCard = document.getElementById
-    userCard.id = comment.id;
-    userCard.title = `${comment.name} had this to share:`;
-    userCard.textContent = comment.comment;
-    const br = document.createElement("br");
-    commentContainer.append(userCard, br);
-}
-function fetchUserComments() {
-        fetch(BASE_URL + '/comments')
-        .then(response => response.json())
-        .then(comments => {
-            comments.forEach(createComments);
-        })
-        .catch(error => console.log(error))
-}
-
-function postComments() {
-    fetch(BASE_URL + '/comments', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(comments),
-    })
+function fetchComments() {
+    fetch(BASE_URL + '/comments/')
     .then(response => response.json())
     .then(comments => {
-        forEach(createComments(comments))
+        comments.forEach(createCommentNods);
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error, "there's something wrong"))
 };
- 
 
-//end of code. ititiateFactsApp() up top.
+function createCommentNods(comments) {
+    const commentsContainer = document.getElementById("comments-container")
+    const commentCard = document.createElement('div');
+    const commentTitle = document.createElement("h3");
+    commentCard.id = `{comment-${comments.id}`;
+    commentCard.className = "comment-cards";
+    commentTitle.textContent = comments.title;
+    const commentContent = comments.content
+    commentsContainer.append(commentCard)
+    commentCard.append(commentTitle, commentContent);
+}
 
-
-function initiateFactsApp() {
-    fetchFacts();
-    navHome();
-    navAbout();
+function postComments(event) {
+    event.preventDefault();
+    let userName = document.querySelector("#user").value;
+    let comment = document.querySelector("#content").value;
+    let commentObj = {name: userName, content: comment}
+    fetch(BASE_URL + '/comments/', {
+            method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(commentObj),
+            })
+            .then(response => response.json())
+            .then(comments => forEach(commentsOn(comments)))
+            .catch(error => console.log(error));
+            commentsForm.reset();
     
 }
 
-initiateFactsApp();////END 0F CODE!!!    
+function commentsOn() {
+    commentsForm.addEventListener("submit", postComments)
+        
+        
+        
+        
+
+    }
+
+             
+                        
+
+
+
+
+// function commentsOn() {
+    //     commentsForm.addEventListener("submit", (e) => {
+        //         console.log(e.target)
+        //         fetchUserComments();
+        //     })
+        //     };
+        
+                            
+                            
+                            
+                            
+                            
+                            //end of code. ititiateFactsApp() up top.
+                            
+                            
+                            
+function initiateFactsApp() {
+    fetchFacts();
+    fetchComments();
+    navHome();
+    navAbout();
+                                
+                            }
+                            
+                            initiateFactsApp();////END 0F CODE!!!    

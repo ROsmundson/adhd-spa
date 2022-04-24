@@ -43,14 +43,14 @@ div.facts-cards {
 
 img.images {
   position: relative;
-  width:  650px;
-  height: 800px;
-  object-fit: cover;
+  width:  700px;
+  height: 600px;
+  object-fit: contain;
 }
 
 img.picture {
   position: relative;
-  width: 400px;
+  width: 500px;
   height: 300px;
 }
 
