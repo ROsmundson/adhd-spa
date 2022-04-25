@@ -9,15 +9,17 @@ const welcome = document.getElementById("welcome");
 const welcomeButton = document.createElement('button');
 const factsSection = document.getElementById("facts-container");
 const commentsForm = document.querySelector("#comment-form")
+const br = document.createElement("br");
+const hr = document.createElement("hr");
 
-function createFactsCards(facts) {
+
+function makeFactsCards(facts) {
     welcomeButton.id = "welcome-button";
     welcomeButton.className = "cards-button";
     welcomeButton.textContent = "Read the Facts"
     const factsCards = document.createElement("div");
     factsCards.id = `facts-card-${facts.id}`;
     factsCards.className = "facts-cards";
-    const br = document.createElement("br")
     const factsImage = document.createElement('img')
     factsImage.src = facts.image;
     factsImage.id = `image-${facts.id}`
@@ -32,23 +34,55 @@ function createFactsCards(facts) {
     factsSection.style.display = "none";
 }
 
-function fetchFacts() {  
+function getFacts() {  
     fetch(BASE_URL + '/TheFacts')
     .then(response => response.json())
     .then(facts => {
-        facts.forEach(fact => createFactsCards(fact));
-        factsOn(facts);
+        facts.forEach(fact => makeFactsCards(fact));
+        makeFacts(facts);
     })
     .catch(error => console.log(error));
 }
 
-function factsOn() {
-    
+function makeFacts() {
     welcomeButton.addEventListener("click", () => {
         welcome.style.display = "none";
         factsSection.style.display = "block";
         let title = document.querySelector("#title");
         title.textContent = "Did You Know";
+    })
+}
+
+
+function getComments() {
+    fetch(BASE_URL + '/comments/')
+    .then(response => response.json())
+    .then(comments => {
+        comments.forEach(makeCommentCards);
+        console.log("great success")
+        
+    })
+    .catch(error => console.log(error, "there's something wrong"))
+};
+
+function makeCommentCards(comments) {
+    const commentsContainer = document.getElementById("comments-container")
+    const commentCard = document.createElement('div');
+    const commentTitle = document.createElement("h3");
+    const commentContent = document.createElement("p");
+    commentCard.id = `{comment-${comments.id}`;
+    commentCard.className = "comment-cards";
+    commentTitle.textContent = comments.title;
+    commentContent.textContent = comments.comment;
+    commentsContainer.append(hr ,commentCard);
+    commentCard.append(commentTitle, commentContent);
+}
+
+function postComments() {
+    commentsForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        makeCommentCards(console.log(e.target.value))
     })
 }
 
@@ -73,83 +107,16 @@ function navAbout() {
     });
 };
 
-function fetchComments() {
-    fetch(BASE_URL + '/comments/')
-    .then(response => response.json())
-    .then(comments => {
-        comments.forEach(createCommentNods);
-    })
-    .catch(error => console.log(error, "there's something wrong"))
-};
-
-function createCommentNods(comments) {
-    const commentsContainer = document.getElementById("comments-container")
-    const commentCard = document.createElement('div');
-    const commentTitle = document.createElement("h3");
-    commentCard.id = `{comment-${comments.id}`;
-    commentCard.className = "comment-cards";
-    commentTitle.textContent = comments.title;
-    const commentContent = comments.content
-    commentsContainer.append(commentCard)
-    commentCard.append(commentTitle, commentContent);
-}
-
-function postComments(event) {
-    event.preventDefault();
-    let userName = document.querySelector("#user").value;
-    let comment = document.querySelector("#content").value;
-    let commentObj = {name: userName, content: comment}
-    fetch(BASE_URL + '/comments/', {
-            method: 'POST',
-            headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(commentObj),
-            })
-            .then(response => response.json())
-            .then(comments => forEach(commentsOn(comments)))
-            .catch(error => console.log(error));
-            commentsForm.reset();
-    
-}
-
-function commentsOn() {
-    commentsForm.addEventListener("submit", postComments)
-        
-        
-        
-        
-
-    }
-
-             
-                        
 
 
 
 
-// function commentsOn() {
-    //     commentsForm.addEventListener("submit", (e) => {
-        //         console.log(e.target)
-        //         fetchUserComments();
-        //     })
-        //     };
-        
-                            
-                            
-                            
-                            
-                            
-                            //end of code. ititiateFactsApp() up top.
-                            
-                            
-                            
 function initiateFactsApp() {
-    fetchFacts();
-    fetchComments();
+    getFacts();
+    getComments();
+    postComments();
     navHome();
-    navAbout();
-                                
-                            }
-                            
-                            initiateFactsApp();////END 0F CODE!!!    
+    navAbout();                        
+}
+
+initiateFactsApp();    

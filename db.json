@@ -1,116 +1,82 @@
 {
-  "theFacts": [
+"theFacts": [
     {
-      "id": 1,
-      "title": "Most People Don't Outgrow ADHD",
-      "image": "https://i.pinimg.com/originals/8c/23/f9/8c23f9255bfbf75e750fd68f5ac486da.jpg",
-      "fact": "Attention-deficit/hyperactivity disorder (ADHD) is a chronic neurodevelopmental disorder. Symptoms continue into adulthood in more than three-quarters of cases. ADHD is characterized by developmentally inappropriate levels of inattention, impulsivity and hyperactivity."
+        "id": 1,
+        "title": "Most People Don't Outgrow ADHD",
+        "image": "https://i.pinimg.com/originals/8c/23/f9/8c23f9255bfbf75e750fd68f5ac486da.jpg",
+        "fact": "Attention-deficit/hyperactivity disorder (ADHD) is a chronic neurodevelopmental disorder. Symptoms continue into adulthood in more than three-quarters of cases. ADHD is characterized by developmentally inappropriate levels of inattention, impulsivity and hyperactivity."
     },
     {
-      "id": 2,
-      "title": "If You Have ADHD, There's a Good Chance Others in Your Family Do Too",
-      "image": "https://preview.redd.it/g7572ejavy461.jpg?auto=webp&s=c3a00965974e2fdd727a166de33f0479e16d3fd5",
-      "fact": "ADHD is a highly genetic, brain-based syndrome that has to do with the regulation of a particular set of brain functions and related behaviors."
+        "id": 2,
+        "title": "If You Have ADHD, There's a Good Chance Others in Your Family Do Too",
+        "image": "https://preview.redd.it/g7572ejavy461.jpg?auto=webp&s=c3a00965974e2fdd727a166de33f0479e16d3fd5",
+        "fact": "ADHD is a highly genetic, brain-based syndrome that has to do with the regulation of a particular set of brain functions and related behaviors."
     },
     {
-      "id": 3,
-      "title": "ADHD is Not a Gender-Specific Disorder",
-      "image": "https://i.insider.com/58124ad2dd089541098b4ae6?width=600&format=jpeg&auto=webp",
-      "fact": "Approximately 5% of adults in the US, both male and female, have ADHD. That's more than 11,000,000 people."
+        "id": 3,
+        "title": "ADHD is Not a Gender-Specific Disorder",
+        "image": "https://i.insider.com/58124ad2dd089541098b4ae6?width=600&format=jpeg&auto=webp",
+        "fact": "Approximately 5% of adults in the US, both male and female, have ADHD. That's more than 11,000,000 people."
     },
     {
-      "id": 4,
-      "title": "ADHD is Not One-Size-Fits-All",
-      "image": "https://media.istockphoto.com/photos/big-shoes-to-fill-childs-feet-in-large-black-shoe-picture-id113030995?k=20&m=113030995&s=612x612&w=0&h=t6d5VdvaYqkywFuLP1mFV-lILec1qG0t2G9Hf-GfOJQ=",
-      "fact": "There are different subtypes of ADHD (inattentive, hyperactive, and combined type), and every person has a unique brain profile. As with anything else, no two people with ADHD are exactly the same and everyone experiences ADHD in their own way."
+        "id": 4,
+        "title": "ADHD is Not One-Size-Fits-All",
+        "image": "https://media.istockphoto.com/photos/big-shoes-to-fill-childs-feet-in-large-black-shoe-picture-id113030995?k=20&m=113030995&s=612x612&w=0&h=t6d5VdvaYqkywFuLP1mFV-lILec1qG0t2G9Hf-GfOJQ=",
+        "fact": "There are different subtypes of ADHD (inattentive, hyperactive, and combined type), and every person has a unique brain profile. As with anything else, no two people with ADHD are exactly the same and everyone experiences ADHD in their own way."
     },
     {
-      "id": 5,
-      "title": "ADHD is Real and Don't Let Anyone Tell You Otherwise",
-      "image": "https://m.media-amazon.com/images/I/61bdCV544HL._AC_UL1001_.jpg",
-      "fact": "ADHD has been recognized as a legitimate diagnosis by major medical, psychological, and educational organizations, including the National Institutes of Health and the U.S. Department of Education."
+        "id": 5,
+        "title": "ADHD is Real and Don't Let Anyone Tell You Otherwise",
+        "image": "https://m.media-amazon.com/images/I/61bdCV544HL._AC_UL1001_.jpg",
+        "fact": "ADHD has been recognized as a legitimate diagnosis by major medical, psychological, and educational organizations, including the National Institutes of Health and the U.S. Department of Education."
     },
     {
-      "id": 6,
-      "title": "ADHD Brains are Different Than Neurotypical Brains",
-      "image": "https://static.wixstatic.com/media/a5ea97_1130551e88af410292dfb0ff83922847~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
-      "fact": "ADHD a result of an imbalance of chemical messengers, or neurotransmitters, within the brain. Its primary symptoms are inattention, impulsiveness, and, sometimes, hyperactivity."
+        "id": 6,
+        "title": "ADHD Brains are Different Than Neurotypical Brains",
+        "image": "https://static.wixstatic.com/media/a5ea97_1130551e88af410292dfb0ff83922847~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
+        "fact": "ADHD a result of an imbalance of chemical messengers, or neurotransmitters, within the brain. Its primary symptoms are inattention, impulsiveness, and, sometimes, hyperactivity."
     },
     {
-      "id": 7,
-      "title": "An ADHD Diagnosis Should Not Be Downplayed or Ignored",
-      "image": "https://listofwhat.com/wp-content/uploads/ADHDSleepDisorders.jpeg",
-      "fact": "ADHD is a very reliable diagnosis. As a matter of fact, it is one of the most reliable diagnoses in all of psychiatry, and in particular, child psychiatry."
+        "id": 7,
+        "title": "An ADHD Diagnosis Should Not Be Downplayed or Ignored",
+        "image": "https://listofwhat.com/wp-content/uploads/ADHDSleepDisorders.jpeg",
+        "fact": "ADHD is a very reliable diagnosis. As a matter of fact, it is one of the most reliable diagnoses in all of psychiatry, and in particular, child psychiatry."
     },
     {
-      "id": 8,
-      "title": "Having ADHD is Not New and is Not a Due to a Lack of discipline",
-      "image": "https://www.marinecorpstimes.com/resizer/4DIe06xD27udBu4FNl3mAO_l0Cg=/1024x0/filters:format(jpg):quality(70)/arc-anglerfish-arc2-prod-mco.s3.amazonaws.com/public/GOJDETJCBVFJ3I2NFIA6B6SELU.jpg",
-      "fact": "ADHD is neither a modern phenomenon nor a purely American or Western one. It was not dreamed up in response to pressure from the pharmaceutical industry or in response to modern academic pressures and the drive to succeed in school. ADHD is rooted in brain chemistry, not dicipline."
+        "id": 8,
+        "title": "Having ADHD is Not New and is Not a Due to a Lack of discipline",
+        "image": "https://www.marinecorpstimes.com/resizer/4DIe06xD27udBu4FNl3mAO_l0Cg=/1024x0/filters:format(jpg):quality(70)/arc-anglerfish-arc2-prod-mco.s3.amazonaws.com/public/GOJDETJCBVFJ3I2NFIA6B6SELU.jpg",
+        "fact": "ADHD is neither a modern phenomenon nor a purely American or Western one. It was not dreamed up in response to pressure from the pharmaceutical industry or in response to modern academic pressures and the drive to succeed in school. ADHD is rooted in brain chemistry, not dicipline."
     },
     {
-      "id": 9,
-      "title": "Having ADHD Does Not Mean Short Attention Span",
-      "image": "https://petkeen.com/wp-content/uploads/2021/05/goldfish-bowl_New-Africa_Shutterstock.jpg",
-      "fact": "The prefrontal cortex of the brain houses executive functioning and manages planning, attention, remembering, organizing and emotional reactions. Those with ADD/ADHD suffer from dysfunctional brain activity in the prefrontal cortex and a dysregulation of dopamine.“People who think ADHD means having a short attention span misunderstand what ADHD is,” says Kathleen Nadeau, Ph.D., a psychologist in Silver Spring, Maryland, and the author of ADD-Friendly Ways to Organize Your Life. “A better way to look at it is that people with ADHD have a dysregulated attention system.”"
+        "id": 9,
+        "title": "Having ADHD Does Not Mean Short Attention Span",
+        "image": "https://petkeen.com/wp-content/uploads/2021/05/goldfish-bowl_New-Africa_Shutterstock.jpg",
+        "fact": "The prefrontal cortex of the brain houses executive functioning and manages planning, attention, remembering, organizing and emotional reactions. Those with ADD/ADHD suffer from dysfunctional brain activity in the prefrontal cortex and a dysregulation of dopamine.“People who think ADHD means having a short attention span misunderstand what ADHD is,” says Kathleen Nadeau, Ph.D., a psychologist in Silver Spring, Maryland, and the author of ADD-Friendly Ways to Organize Your Life. “A better way to look at it is that people with ADHD have a dysregulated attention system.”"
     },
     {
-      "id": 10,
-      "title": "ADHD is No Joke",
-      "image": "https://www.cnet.com/a/img/resize/b17c7305e96b7b186ed6cba9a38365ebb8b9cc29/2022/03/29/060c4d86-8958-42b8-8768-e2fa1fba685c/slap3.jpg?auto=webp&width=940",
-      "fact": "ADHD is diagnosed only when symptoms are severe enough to cause ongoing problems in more than one area of your life. These persistent and disruptive symptoms can be traced back to early childhood."
+        "id": 10,
+        "title": "ADHD is No Joke",
+        "image": "https://www.cnet.com/a/img/resize/b17c7305e96b7b186ed6cba9a38365ebb8b9cc29/2022/03/29/060c4d86-8958-42b8-8768-e2fa1fba685c/slap3.jpg?auto=webp&width=940",
+        "fact": "ADHD is diagnosed only when symptoms are severe enough to cause ongoing problems in more than one area of your life. These persistent and disruptive symptoms can be traced back to early childhood."
     }
   ],
-  "comments": [
+
+"comments": [
     {
-      "name": "",
-      "comment": "",
-      "id": 1
+        "id": "one",
+        "title": "Jeffrey Lebowski had this to say:",
+        "name": "Jeffrey Lebowski",
+        "comment": "Hey, careful, man, there's a beverage here!"
     },
     {
-      "name": "",
-      "content": "",
-      "id": 2
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 3
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 4
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 5
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 6
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 7
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 8
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 9
-    },
-    {
-      "name": "",
-      "content": "",
-      "id": 10
+        "id": "two",
+        "title": "Kate had this to say:",
+        "name": "Kate",
+        "comment": "Thanks for sharing!"
+
+
     }
+
   ]
 }
