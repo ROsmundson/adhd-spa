@@ -6,27 +6,28 @@ const BASE_URL = 'http://localhost:3000';
 const homePage = document.getElementById("facts-page");
 const aboutPage = document.getElementById("about-page");
 const welcome = document.getElementById("welcome");
-const welcomeButton = document.createElement('button');
 const factsSection = document.getElementById("facts-container");
 const commentsForm = document.querySelector("#comment-form")
+
+
+const welcomeButton = document.createElement('button');
 const br = document.createElement("br");
 const hr = document.createElement("hr");
 
-
 function makeFactsCards(facts) {
+    const factsCards = document.createElement("div");
+    const factsImage = document.createElement('img')
+    const factsTitle = document.createElement("h1");
+    const factsContent = document.createElement("h3");
     welcomeButton.id = "welcome-button";
     welcomeButton.className = "cards-button";
     welcomeButton.textContent = "Read the Facts"
-    const factsCards = document.createElement("div");
     factsCards.id = `facts-card-${facts.id}`;
     factsCards.className = "facts-cards";
-    const factsImage = document.createElement('img')
     factsImage.src = facts.image;
     factsImage.id = `image-${facts.id}`
     factsImage.className = "images";
-    const factsTitle = document.createElement("h1");
     factsTitle.textContent = facts.title;
-    const factsContent = document.createElement("h3");
     factsContent.textContent = facts.fact;
     welcome.append(welcomeButton);
     factsSection.append(factsCards);
@@ -59,32 +60,49 @@ function getComments() {
     .then(response => response.json())
     .then(comments => {
         comments.forEach(makeCommentCards);
-        console.log("great success")
-        
     })
     .catch(error => console.log(error, "there's something wrong"))
 };
 
 function makeCommentCards(comments) {
-    const commentsContainer = document.getElementById("comments-container")
+    const commentsContainer = document.getElementById("comments-container");
     const commentCard = document.createElement('div');
     const commentTitle = document.createElement("h3");
+    const commentName = document.createElement("h4")
     const commentContent = document.createElement("p");
-    commentCard.id = `{comment-${comments.id}`;
+    commentCard.id = comments.id;
     commentCard.className = "comment-cards";
-    commentTitle.textContent = comments.title;
+    commentTitle.id = comments.id;
+    commentName.textContent =  comments.name;
     commentContent.textContent = comments.comment;
-    commentsContainer.append(hr ,commentCard);
-    commentCard.append(commentTitle, commentContent);
+    commentsContainer.append(commentTitle, commentName, commentCard);
+    commentCard.append(commentContent, hr);
 }
 
-function postComments() {
+function makeComments() {
     commentsForm.addEventListener("submit", (e) => {
         e.preventDefault();
+            let commentName = commentsForm.querySelector("#user").value;
+            let commentContent = commentsForm.querySelector("#content").value;
+            let comment = {
+                name: commentName,
+                comment: commentContent,
+            }
 
-        makeCommentCards(console.log(e.target.value))
+            fetch(BASE_URL + '/comments/', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(comment),
+            })
+            .then(response => response.json())
+            .then(comments => makeCommentCards(comments)
+            )
+            .catch(error => console.log(error))
     })
 }
+
 
 function navHome() {
     const homeButton = document.getElementById("home");
@@ -114,7 +132,7 @@ function navAbout() {
 function initiateFactsApp() {
     getFacts();
     getComments();
-    postComments();
+    makeComments();
     navHome();
     navAbout();                        
 }
