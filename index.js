@@ -3,6 +3,18 @@ function initiateFactsApp() {
     document.addEventListener('DOMContentLoaded', () => {
         console.log("Page has loaded");
     });
+    
+    const BASE_URL = 'http://localhost:3000';
+    const homePage = document.getElementById("facts-page");
+    const aboutPage = document.getElementById("about-page");
+    const homePageWelcome = document.getElementById("welcome");
+    const factsSection = document.getElementById("facts-container");
+    const commentsForm = document.getElementById("comment-form")
+
+
+    const welcomeButton = document.createElement('button');
+    const br = document.createElement("br");
+    const hr = document.createElement("hr");
 
     function navHome() {
         const homeButton = document.getElementById("home");
@@ -24,17 +36,6 @@ function initiateFactsApp() {
         });
     };
 
-    const BASE_URL = 'http://localhost:3000';
-    const homePage = document.getElementById("facts-page");
-    const aboutPage = document.getElementById("about-page");
-    const homePageWelcome = document.getElementById("welcome");
-    const factsSection = document.getElementById("facts-container");
-    const commentsForm = document.querySelector("#comment-form")
-
-
-    const welcomeButton = document.createElement('button');
-    const br = document.createElement("br");
-    const hr = document.createElement("hr");
 
     function buildAndAppendFactsCards(facts) {
         const factsCards = document.createElement("div");
@@ -102,14 +103,15 @@ function initiateFactsApp() {
 
     function makeAndPostComments() {
         commentsForm.addEventListener("submit", (e) => {
+
             e.preventDefault();
-                let commentName = commentsForm.querySelector("#user").value;
-                let commentContent = commentsForm.querySelector("#content").value;
+            
+            let commentName = commentsForm.querySelector("#user").value;
+            let commentContent = commentsForm.querySelector("#content").value;
                 let comment = {
                     name: commentName,
                     comment: commentContent,
                 }
-
                 fetch(BASE_URL + '/comments/', {
                     method: 'POST',
                     headers: {
@@ -118,11 +120,15 @@ function initiateFactsApp() {
                     body: JSON.stringify(comment),
                 })
                 .then(response => response.json())
-                .then(comments => buildCommentCards(comments)
-                )
-                .catch(error => console.log(error))
-        })
-    }
+                .then(comments => {
+                    buildCommentCards(comments);
+                    commentsForm.reset();
+
+                }).catch(error => console.log(error))
+            })
+        }
+        
+    
 
     getFacts();
     getComments();
